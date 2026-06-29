@@ -1,0 +1,126 @@
+import React,{useState} from "react";
+import axios from "axios";
+
+
+function App(){
+
+const [data,setData]=useState({
+
+skills:"",
+interest:"",
+budget:""
+
+});
+
+
+const [result,setResult]=useState([]);
+
+
+
+function submit(){
+
+axios.post(
+
+"http://127.0.0.1:5000/generate",
+
+data
+
+)
+
+.then(res=>{
+
+setResult(res.data.recommendations)
+
+})
+
+}
+
+
+
+return(
+
+<div>
+
+<h1>
+Smart Business Idea Generator
+</h1>
+
+
+<input
+placeholder="Your Skills"
+onChange={
+e=>setData({...data,skills:e.target.value})
+}
+/>
+
+
+<input
+placeholder="Interest (AI, Education etc)"
+onChange={
+e=>setData({...data,interest:e.target.value})
+}
+/>
+
+
+
+<input
+placeholder="Budget"
+onChange={
+e=>setData({...data,budget:e.target.value})
+}
+/>
+
+
+
+<button onClick={submit}>
+Generate Ideas
+</button>
+
+
+
+{
+result.map((item,index)=>(
+
+<div key={index}>
+
+<h2>
+{item["Business Name"]}
+</h2>
+
+
+<p>
+Problem:
+{item.Problem}
+</p>
+
+
+<p>
+Revenue:
+{item.Revenue}
+</p>
+
+
+<p>
+Scalability:
+{item.Scalability}/10
+</p>
+
+
+</div>
+
+
+))
+
+}
+
+
+
+</div>
+
+
+)
+
+
+}
+
+export default App;
