@@ -1,0 +1,102 @@
+import random
+
+
+def generate_business(user):
+
+    skills=user["skills"]
+    interest=user["interest"]
+    budget=user["budget"]
+
+
+    ideas=[]
+
+
+    if "AI" in interest:
+
+        ideas.append({
+
+        "Business Name":
+        "AI Automation Agency",
+
+        "Problem":
+        "Small businesses need automation",
+
+        "Customers":
+        "Local businesses and startups",
+
+        "Revenue":
+        "Monthly subscription",
+
+        "Cost":
+        budget,
+
+        "Difficulty":
+        "Intermediate",
+
+        "Scalability":
+        9
+
+        })
+
+
+    if "Education" in interest:
+
+        ideas.append({
+
+        "Business Name":
+        "AI Learning Platform",
+
+        "Problem":
+        "Students need personalized learning",
+
+        "Customers":
+        "Students and institutions",
+
+        "Revenue":
+        "Subscription",
+
+        "Cost":
+        budget,
+
+        "Difficulty":
+        "Advanced",
+
+        "Scalability":
+        8
+
+        })
+
+
+    ideas.append({
+
+    "Business Name":
+    "Digital Consulting Service",
+
+    "Problem":
+    "Businesses need online growth",
+
+    "Customers":
+    "Small companies",
+
+    "Revenue":
+    "Consulting Fees",
+
+    "Cost":
+    budget,
+
+    "Difficulty":
+    "Beginner",
+
+    "Scalability":
+    7
+
+    })
+
+
+    return {
+
+    "profile":user,
+
+    "recommendations":ideas
+
+    }
